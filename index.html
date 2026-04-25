@@ -1,0 +1,677 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Premium Cuts Butchery | Artisan Meats & Fine Cuts</title>
+  <!-- Google Fonts + Font Awesome for modern icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.25s ease, color 0.2s ease;
+      scroll-behavior: smooth;
+    }
+
+    /* CSS Variables for light/dark mode */
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f9f7f4;
+      --bg-card: #ffffff;
+      --text-primary: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --accent: #b22222;
+      --accent-dark: #8b0000;
+      --accent-light: #e03a3a;
+      --border-light: #eae6e0;
+      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    body.dark {
+      --bg-primary: #0f0f0f;
+      --bg-secondary: #1a1a1a;
+      --bg-card: #202020;
+      --text-primary: #f0f0f0;
+      --text-secondary: #bcbcbc;
+      --border-light: #2c2c2c;
+      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    /* smooth container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* modern header with blur glass effect */
+    .top-bar {
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background-color: rgba(var(--bg-primary-rgb), 0.85);
+    }
+
+    /* custom utility */
+    .section-padding {
+      padding: 5rem 0;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .logo h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), #c0392b);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-radius: 3rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    /* Hero section - alive with floating elements */
+    .hero-modern {
+      background: linear-gradient(115deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .hero-badge {
+      background: var(--accent-light);
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(to right, var(--accent), #e67e22);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 550px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      padding: 0.9rem 2rem;
+      border-radius: 40px;
+      color: white;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 8px 20px rgba(178, 34, 34, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 25px -8px rgba(178, 34, 34, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      padding: 0.85rem 2rem;
+      border-radius: 40px;
+      font-weight: 700;
+      color: var(--accent);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      flex: 1;
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 32px;
+      box-shadow: var(--shadow-md);
+      object-fit: cover;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* section headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    /* product cards grid modern - expanded */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border-radius: 28px;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .product-img {
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-img img {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .price {
+      font-weight: 800;
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-top: 0.5rem;
+    }
+    .badge-new {
+      background: #27ae60;
+      color: white;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    /* about + testimonial modern */
+    .about-flex {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+      background: var(--bg-secondary);
+      border-radius: 48px;
+      padding: 2rem;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat .number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .testimonial-slider {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding: 1rem 0.5rem 2rem;
+      scroll-snap-type: x mandatory;
+    }
+
+    .testimonial-card {
+      min-width: 320px;
+      background: var(--bg-card);
+      border-radius: 28px;
+      padding: 2rem;
+      scroll-snap-align: start;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .testimonial-card i {
+      font-size: 2rem;
+      color: var(--accent);
+      opacity: 0.6;
+      margin-bottom: 1rem;
+    }
+
+    .contact-modern {
+      background: linear-gradient(145deg, var(--bg-secondary), var(--bg-primary));
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+
+    .contact-flex {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+    }
+
+    footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-light);
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero-grid {
+        flex-direction: column-reverse;
+      }
+      .section-padding {
+        padding: 3rem 0;
+      }
+      .about-flex {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <h2>PREMIUM CUTS <span>Butchery & Fine Meats</span></h2>
+      </div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#products">Cuts</a>
+        <a href="#about">Story</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="darkModeToggle" aria-label="Dark mode">
+          <i class="fas fa-moon"></i> <span id="themeText">Dark</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO section modern -->
+<section class="hero-modern section-padding" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-fire"></i> FRESH DAILY • PREMIUM GRADE</div>
+        <h1>Artisan Meats, <br>Uncompromised Quality</h1>
+        <p>Hand-selected cuts, ethical sourcing, and the richest flavor. From sizzling braais to gourmet steaks — taste the difference.</p>
+        <div class="btn-group">
+          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"><i class="fab fa-whatsapp"></i> Order Now</button>
+          <button class="btn-outline" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Explore Cuts <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=600&auto=format" alt="fresh meat display">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPANDED PRODUCTS section - gallery removed, +more real product images -->
+<section class="section-padding" id="products">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Premium Selection</h2>
+      <p style="color: var(--text-secondary); margin-top: 12px;">Farm-fresh, ethically sourced, and masterfully cut</p>
+    </div>
+    <div class="product-grid">
+      <!-- 1. Beef Cuts -->
+      <div class="product-card">
+        <div class="product-img"><img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=500&auto=format" alt="Beef cuts"></div>
+        <div class="product-info"><h3>Angus Beef</h3><p>Ribeye, sirloin, mince, rump</p><div class="price">R139 – R199/kg</div></div>
+      </div>
+      <!-- 2. Free-Range Chicken -->
+      <div class="product-card">
+        <div class="product-img"><img src="https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=500&auto=format" alt="whole chicken"></div>
+        <div class="product-info"><h3>Free-Range Chicken</h3><p>Whole, thighs, drumsticks, breast</p><div class="price">From R69/kg</div></div>
+      </div>
+      <!-- 3. Lamb & Mutton -->
+      <div class="product-card">
+        <div class="product-img"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format" alt="lamb chops"></div>
+        <div class="product-info"><h3>Karoo Lamb</h3><p>Loin chops, rib rack, leg roast</p><div class="price">R179 – R249/kg</div></div>
+      </div>
+
+      <!-- 5. Braai Packs -->
+      <div class="product-card">
+        <div class="product-img"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=500&auto=format" alt="braai platter"></div>
+        <div class="product-info"><h3>The Ultimate Braai Box</h3><p>Mixed meat, wors, sosaties, marinade</p><div class="price">R249/box</div></div>
+      </div>
+      <!-- 6. Pork Specialities -->
+      <div class="product-card">
+        <div class="product-img"><img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=500&auto=format" alt="pork chops"></div>
+        <div class="product-info"><h3>Heritage Pork</h3><p>Chops, belly, ribs, tenderloin</p><div class="price">R89 – R149/kg</div></div>
+      </div>
+      <!-- 7. Dry-Aged Steaks -->
+      <div class="product-card">
+        <div class="product-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format" alt="dry aged steak"></div>
+        <div class="product-info"><h3>Dry-Aged Beef</h3><p>30-day aged tomahawk, strip loin</p><div class="price">R289/kg</div><span class="badge-new">Limited</span></div>
+      </div>
+
+      <!-- 9. Gourmet Burgers -->
+      <div class="product-card">
+        <div class="product-img"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format" alt="burger patties"></div>
+        <div class="product-info"><h3>Smash Patty Packs</h3><p>Beef/ lamb patties, seasoned</p><div class="price">R119/4 pack</div></div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- About + Modern stats section (no gallery) -->
+<section class="section-padding" id="about">
+  <div class="container">
+    <div class="about-flex">
+      <div class="about-text">
+        <h3>Master Butchery Since 1998</h3>
+        <p style="color: var(--text-secondary); line-height: 1.5;">Premium Cuts is more than a butchery — it's a legacy of flavor. We work directly with ethical farmers, dry-age our beef in climate-controlled chambers, and hand-trim each cut. Every steak tells a story of passion and tradition, and we source 100% local, hormone-free livestock.</p>
+        <div class="stats">
+          <div class="stat"><div class="number">25+</div><div>Years of Excellence</div></div>
+          <div class="stat"><div class="number">10k+</div><div>Happy Families</div></div>
+          <div class="stat"><div class="number">100%</div><div>Fresh Guarantee</div></div>
+        </div>
+      </div>
+      <div style="flex: 1; border-radius: 32px; overflow: hidden;">
+        <img src="https://images.unsplash.com/photo-1587593813703-b26bde41b732?w=600&auto=format" style="width:100%; height:100%; object-fit:cover; border-radius: 32px;" alt="butcher shop">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials: dynamic & alive -->
+<section class="section-padding" style="background: var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header">
+      <h2>Voices of Flavor</h2>
+      <p>Trusted by chefs & home cooks</p>
+    </div>
+    <div class="testimonial-slider">
+      <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"The lamb chops are divine — tender, juicy, and always delivered on time. Premium Cuts is our go-to!"</p><strong>— Linda K.</strong><div><i class="fas fa-star" style="color:#ffb347;"></i> 5.0</div></div>
+      <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Best boerewors I've had outside of a farm stall. Their braai packs are lifesavers for weekend gatherings."</p><strong>— Thabo M.</strong><div><i class="fas fa-star" style="color:#ffb347;"></i> 5.0</div></div>
+      <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Incredible service, impeccable meat. The dry-aged ribeye melts in your mouth. Highly recommend!"</p><strong>— Chef David</strong><div><i class="fas fa-star" style="color:#ffb347;"></i> 5.0</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact section elegant -->
+<section class="section-padding" id="contact">
+  <div class="container">
+    <div class="contact-modern">
+      <div class="section-header"><h2>Get Your Premium Cut</h2><p>Order for pickup or delivery — we’re here</p></div>
+      <div class="contact-flex">
+        <div class="contact-card"><i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> 123 Market Street, Pretoria</div>
+        <div class="contact-card"><i class="fas fa-phone-alt"></i> +27 12 345 6789</div>
+        <div class="contact-card"><i class="far fa-clock"></i> Mon-Sat: 8am – 6pm</div>
+      </div>
+      <button class="btn-primary" style="background: #25D366; gap: 12px;" onclick="window.open('https://wa.me/27123456789?text=Hello%20Premium%20Cuts%2C%20I%27d%20like%20to%20place%20an%20order','_blank')"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</button>
+      <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">Fresh deliveries daily, pre-order your braai packs now.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Premium Cuts Butchery — Premium meat, honest prices.</p>
+    <div style="margin-top: 10px; gap: 16px; display: flex; justify-content: center;">
+      <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i> <i class="fab fa-twitter"></i>
+    </div>
+  </div>
+</footer>
+
+<!-- Dark mode toggle script & interactive micro -->
+<script>
+  (function() {
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const themeTextSpan = document.getElementById('themeText');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let isDark = localStorage.getItem('theme') === 'dark' || (localStorage.getItem('theme') === null && prefersDark);
+    
+    function setTheme(dark) {
+      if (dark) {
+        document.body.classList.add('dark');
+        if(themeTextSpan) themeTextSpan.innerText = 'Light';
+      } else {
+        document.body.classList.remove('dark');
+        if(themeTextSpan) themeTextSpan.innerText = 'Dark';
+      }
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    }
+    
+    setTheme(isDark);
+    
+    if(toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        isDark = !document.body.classList.contains('dark');
+        setTheme(isDark);
+      });
+    }
+    
+    // Smooth scroll with nav links
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if(targetId && targetId !== '#') {
+          e.preventDefault();
+          const elem = document.querySelector(targetId);
+          if(elem) {
+            elem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+    
+    const heroBtn = document.querySelector('.hero-content .btn-primary');
+    if(heroBtn) {
+      heroBtn.addEventListener('click', () => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  })();
+</script>
+<!-- additional small style for modern look -->
+<style>
+  .top-bar {
+    background-color: var(--bg-primary);
+    backdrop-filter: blur(12px);
+    background-color: color-mix(in srgb, var(--bg-primary) 85%, transparent);
+  }
+  body.dark .top-bar {
+    background-color: color-mix(in srgb, #0f0f0f 88%, transparent);
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+  }
+  .testimonial-slider::-webkit-scrollbar {
+    height: 5px;
+  }
+  button, .btn-primary, .btn-outline {
+    cursor: pointer;
+  }
+</style>
+</body>
+</html>
